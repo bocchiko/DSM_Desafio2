@@ -29,11 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> {
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_medicines -> {
-                Toast.makeText(this, "Medicines", Toast.LENGTH_SHORT).show()
-            }
             R.id.nav_orders -> {
-                Toast.makeText(this, "Orders", Toast.LENGTH_SHORT).show()
+                this.orders()
             }
             R.id.nav_logout -> {
                 this.logout()
@@ -83,6 +80,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             finish()
         }
 
+    }
+    private fun orders(){
+        val intent = Intent(this, OrdersActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

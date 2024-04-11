@@ -6,10 +6,6 @@
             android:icon="@drawable/abc_vector_test"
             android:title="Home" />
         <item
-            android:id="@+id/nav_medicines"
-            android:icon="@drawable/abc_vector_test"
-            android:title="Medicinas" />
-        <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/abc_vector_test"
             android:title="Ordenes" />
@@ -19,7 +15,7 @@
             android:title="Cerrar Sesion" />
     </group>
 
-    <item android:title="Configuracion">
+   <!-- <item android:title="Configuracion">
         <menu>
             <item
                 android:id="@+id/nav_settings"
@@ -30,5 +26,5 @@
                 android:icon="@drawable/abc_vector_test"
                 android:title="Acerca de" />
         </menu>
-    </item>
+    </item>-->
 </menu>
