@@ -16,6 +16,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var btnLogin: AppCompatButton
     private lateinit var textViewRegister: TextView
+
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,14 +35,20 @@ class LoginActivity : AppCompatActivity() {
         textViewRegister.setOnClickListener {
             this.goToRegister()
         }
+        this.checkUser()
     }
 
     override fun onStart() {
         super.onStart()
-        if(auth.currentUser != null){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        auth.addAuthStateListener(authStateListener)
+    }
+    override fun onResume() {
+        super.onResume()
+        auth.addAuthStateListener(authStateListener)
+    }
+    override fun onPause() {
+        super.onPause()
+        auth.removeAuthStateListener(authStateListener)
     }
     private fun login(email: String, password: String) {
         if(email.isNotEmpty() && password.isNotEmpty()){
@@ -61,6 +69,16 @@ class LoginActivity : AppCompatActivity() {
     private fun goToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun checkUser(){
+        authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user != null) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
 }
