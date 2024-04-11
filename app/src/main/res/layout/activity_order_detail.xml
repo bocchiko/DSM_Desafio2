@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Detail"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/yellow"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <ListView
+        android:id="@+id/listViewMedicines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBackToOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:text="Volver"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>

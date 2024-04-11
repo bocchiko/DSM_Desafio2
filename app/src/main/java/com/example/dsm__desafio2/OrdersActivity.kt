@@ -71,6 +71,41 @@ class OrdersActivity : AppCompatActivity() {
                             ordersAdapter.add("Orden sin fecha o total")
                         }
                     }
+
+                    orderListView.setOnItemClickListener { parent, view, position, id ->
+                        val selectedOrderId = snapshot.children.elementAtOrNull(position)?.key
+                        selectedOrderId?.let { orderId ->
+                            val orderSnapshot = snapshot.child(orderId)
+                            val medicinesSnapshot = orderSnapshot.child("medicines")
+                            val medicinesList = mutableListOf<String>()
+                            var totalOrder = 0.0
+                            for (medicineSnapshot in medicinesSnapshot.children) {
+                                val name = medicineSnapshot.child("name").getValue(String::class.java)
+                                val price = medicineSnapshot.child("price").getValue(Double::class.java)
+                                if (name != null && price != null) {
+                                    medicinesList.add("$name - Precio: $price")
+                                    totalOrder += price
+                                }
+                            }
+
+                            // Obtener el total de la orden
+                            val total = orderSnapshot.child("total").getValue(Double::class.java)
+                            if (total != null) {
+                                totalOrder = total
+                            }
+
+                            // Crear un intent para iniciar la actividad OrderDetailActivity
+                            val intent = Intent(this@OrdersActivity, OrderDetailActivity::class.java)
+
+                            // Puedes pasar la lista de medicamentos y el total de la orden a OrderDetailActivity para mostrarlos en la pantalla de detalles de la orden
+                            intent.putStringArrayListExtra("MEDICINES", ArrayList(medicinesList))
+                            intent.putExtra("TOTAL_ORDER", totalOrder)
+
+                            // Iniciar la actividad OrderDetailActivity
+                            startActivity(intent)
+                        }
+                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
