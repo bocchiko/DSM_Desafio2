@@ -10,12 +10,14 @@ open class Order {
     var total: Double? = 0.0
     var date: Date? =  java.util.Date()
     var key: String? = null
+    var userId: String? = null
     var per: MutableMap<String, Boolean> = HashMap()
 
     constructor() {}
-    constructor(medicines: MutableList<Medicine>, total: Double?) {
+    constructor(medicines: MutableList<Medicine>, total: Double?, userId: String?) {
         this.medicines = medicines
         this.total = total
+        this.userId = userId
     }
 
     fun toMap(): Map<String, Any?> {
@@ -24,7 +26,11 @@ open class Order {
             "total" to total,
             "date" to date,
             "key" to key,
-            "per" to per
+            "per" to per,
+            "userId" to userId
         )
     }
+
+
+
 }
