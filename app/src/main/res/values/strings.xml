@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DMS PharmaLink</string>
+    <string name="app_name">PharmaLink</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
 
