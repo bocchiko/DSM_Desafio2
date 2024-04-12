@@ -51,22 +51,11 @@ class OrdersActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     ordersAdapter.clear()
                     for (orderSnapshot in snapshot.children) {
-                        val dateMap = orderSnapshot.child("date").getValue() as? Map<*, *>
+                        val date = orderSnapshot.child("date").getValue(String::class.java)
                         val total = orderSnapshot.child("total").getValue(Double::class.java)
 
-                        if (dateMap != null && total != null) {
-                            val calendar = Calendar.getInstance()
-                            calendar.set(
-                                dateMap["year"].toString().toInt(),
-                                dateMap["month"].toString().toInt(),
-                                dateMap["day"].toString().toInt(),
-                                dateMap["hours"].toString().toInt(),
-                                dateMap["minutes"].toString().toInt(),
-                                dateMap["seconds"].toString().toInt()
-                            )
-                            val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
-                            val dateString = dateFormat.format(calendar.time)
-                            ordersAdapter.add("Fecha: $dateString - Total: $total")
+                        if (total != null) {
+                            ordersAdapter.add("Fecha: $date - Total: $total")
                         } else {
                             ordersAdapter.add("Orden sin fecha o total")
                         }
