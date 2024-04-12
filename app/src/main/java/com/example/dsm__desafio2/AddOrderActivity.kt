@@ -111,8 +111,6 @@ class AddOrderActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             order.key(key)
             refOrder.child(key!!).setValue(order.toMap()).addOnSuccessListener {
                 Toast.makeText(this, "Orden guardada", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, OrdersActivity::class.java)
-                startActivity(intent)
                 finish()
             }.addOnFailureListener {
                 Toast.makeText(this, "Error al guardar la orden", Toast.LENGTH_SHORT).show()
