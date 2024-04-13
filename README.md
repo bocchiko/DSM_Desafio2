@@ -14,11 +14,11 @@
 ---
 
 ### **Link de Documento PDF**
-El archivo PDF se encuentra en el siguiente [Enlace.]()
+El archivo PDF se encuentra en el siguiente [Enlace.](https://drive.google.com/file/d/1XWtIO8thWSti3rfKX00N-Ro6Eqzt0K11/view?usp=sharing)
 
 ---
 
 ### **Link de Video Demostrativo**
-El video mostrando la funcionalidad se encuentra en el siguiente [Enlace.]()
+El video mostrando la funcionalidad se encuentra en el siguiente [Enlace.](https://drive.google.com/file/d/12cJJAOcH4b1mgQGzZExgYXbU0Lzrvohd/view?usp=sharing)
 
 ---
